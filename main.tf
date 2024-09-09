@@ -1,6 +1,5 @@
 provider "aws" {
-  region     = "us-west-2"
- 
+  region = "us-west-2"
 }
 
 # Target Group
@@ -8,6 +7,7 @@ resource "aws_lb_target_group" "app_tg" {
   name     = "app-tg"
   port     = 80
   protocol = "HTTP"
+  vpc_id   = var.vpc_id
 
   health_check {
     path                = "/"
@@ -27,8 +27,8 @@ resource "aws_lb" "app_lb" {
   name                        = "app-lb"
   internal                    = false
   load_balancer_type          = "application"
-  security_groups             = [aws_security_group.allow_all.id]
-  subnets                     = [aws_subnet.public_subnet_1.id, aws_subnet.public_subnet_2.id]
+  security_groups             = var.security_group_ids
+  subnets                     = var.subnet_ids
   enable_deletion_protection  = false
   enable_cross_zone_load_balancing = true
   idle_timeout                = 60
