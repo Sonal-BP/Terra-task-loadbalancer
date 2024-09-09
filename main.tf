@@ -1,6 +1,6 @@
-provider "aws" {
-  region = "us-west-2"
-}
+#provider "aws" {
+ # region = "us-west-2"
+#}
 
 # Target Group
 resource "aws_lb_target_group" "app_tg" {
