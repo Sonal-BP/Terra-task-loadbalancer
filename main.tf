@@ -2,7 +2,7 @@ resource "aws_launch_configuration" "nginx-launch_config" {
   name          = "nginx-launch-config"
   image_id      = var.ami_id
   instance_type = var.instance_type
-  security_groups = [aws_security_group.ec2_sg.id]
+  security_groups = [var.ec2_sg_id]
 
   lifecycle {
     create_before_destroy = true
