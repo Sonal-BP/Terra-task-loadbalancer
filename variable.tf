@@ -17,3 +17,8 @@ variable "ami_id" {
 variable "instance_type" {
   type = string
 }
+variable "ec2_sg_id" {
+  description = "Security group ID for ASG"
+  type        = string
+}
+
